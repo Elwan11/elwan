@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Chatbot Médical</title>
+
+</head>
+<body>
+<div class="texte"> 
+    <img src="../static/images/oky-doky-marque.png" alt="texte alternatif" class="logo">
+    <h1 class="texte1">Bienvenue dans le chatbot médical. </br>
+        Répondez aux questions par oui ou par non.</h1>
+    </div>    
+
+<div class="texte3">
+    <h1 class="texte2">Le patient est-il un enfant ?</h1></div>
+    
+<div class="button">
+    <button class="button1">OUI</button>
+    <button class="button2">NON</button></div>
+   
+<p class="response">z</p>
+    
+
+
+    <script>
+        function sendAnswer(answer) {
+            let question = document.getElementById("question").innerText;
+
+            fetch("/chatbot", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ question: question, answer: answer })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (isFinalResponse(data.next_question)) {
+                    document.getElementById("response").innerText = data.next_question;
+                    document.getElementById("yesBtn").disabled = true;
+                    document.getElementById("noBtn").disabled = true;
+                    document.getElementById("restartBtn").style.display = "block"; // Afficher "Recommencer"
+                } else {
+                    document.getElementById("question").innerText = data.next_question;
+                }
+            });
+        }
+
+        function isFinalResponse(response) {
+            let finalResponses = [
+                "Consulte un médecin.", "Prends un antidouleur et repose-toi.",
+                "Bois de l’eau et repose-toi.", "Essaie de dormir plus tôt ce soir.",
+                "Fais une pause et repose tes yeux.", "Bois un grand verre d’eau.",
+                "Bois de l’eau et surveille tes symptômes.", "Tout va bien !"
+            ];
+            return finalResponses.includes(response);
+        }
+
+        function restartChat() {
+            document.getElementById("question").innerText = "As-tu de la fièvre ?";
+            document.getElementById("response").innerText = "";
+            document.getElementById("yesBtn").disabled = false;
+            document.getElementById("noBtn").disabled = false;
+            document.getElementById("restartBtn").style.display = "none"; // Cacher "Recommencer"
+        }
+    </script>
+</body>
+</html>
