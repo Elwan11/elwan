@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Chatbot Médical</title>
+
+</head>
+<body>
+<div class="texte"> 
+    <img src="../static/images/oky-doky-marque.png" alt="texte alternatif" class="logo">
+    <h1 class="texte1">Bienvenue dans le chatbot médical. </br>
+        Répondez aux questions par oui ou par non.</h1>
+    </div>    
+
+<div class="texte3">
+    <h1 id="question" class="texte2">Le patient est-il un enfant ?</h1></div>
+    
+<div class="button">
+    <button id="yesBtn" onclick="sendAnswer('oui')" class="button1">OUI</button>
+    <button id="noBtn" onclick="sendAnswer('non')" class="button2">NON</button>
+    <button id="restartBtn" onclick="restartChat()" class="button4" style="display: none;">Recommencer</button>
+</div>
+   
+<p id="response" class="response"></p>
+    
+
+
+    <script>
+        function sendAnswer(answer) {
+            let question = document.getElementById("question").innerText;
+
+            fetch("/chatbot", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ question: question, answer: answer })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (isFinalResponse(data.next_question)) {
+                    document.getElementById("response").innerText = data.next_question;
+                    document.getElementById("yesBtn").disabled = true;
+                    document.getElementById("noBtn").disabled = true;
+                    document.getElementById("restartBtn").style.display = "block";
+                } else {
+                    document.getElementById("question").innerText = data.next_question;
+                }
+            });
+        }
+
+        function isFinalResponse(response) {
+            let finalResponses = [
+                "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent",
+                "Nous allons faire passer un examen clinique au patient d'ici une trentaine de minutes. Urgent",
+                "Le patient a fait une lipothymie. Il pourra être pris en charge d'ici 15 minutes. Très urgent",
+                "Le patient est dans le coma. Il doit être pris en charge immédiatement. Réanimation",
+                "Le patient a fait une syncope. Il pourra être pris ne charge dans les 15 minutes qui suivent. Très urgent",
+            ];
+            return finalResponses.includes(response);
+        }
+
+        function restartChat() {
+            document.getElementById("question").innerText = "Le patient est-il un enfant ?";
+            document.getElementById("response").innerText = "";
+            document.getElementById("yesBtn").disabled = false;
+            document.getElementById("noBtn").disabled = false;
+            document.getElementById("restartBtn").style.display = "none";
+        }
+    </script>
+</body>
+</html>
