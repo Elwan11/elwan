@@ -10,10 +10,10 @@ CORS(app)
 decision_tree = {
     "Le patient est-il un enfant ?": {
         "oui": "L'enfant a-t-il déjà eu une maladie cardiaque, des palpitations ?"
-,       "non": "L'adulte a-t-il des problèmes de coeur, palpitations ?"
+,       "non": "L'adulte a-t-il perdu brièvement connaissance ?"
 },     
     "Le patient a-t-il déjà eu une maladie cardiaque, des palpitations ?": {  
-        "oui": "Nous allons faire le bilan cardiaque de l'enfant d'ici 15 minutes. Très urgent"
+        "oui": "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent"
 ,       "non": "A-t-il fait son malaise au repos ?"
 },    
     "A-t-il fait son malaise au repos ?": {

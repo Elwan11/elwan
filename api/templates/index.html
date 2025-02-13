@@ -20,7 +20,7 @@
 <div class="button">
     <button id="yesBtn" onclick="sendAnswer('oui')" class="button1">OUI</button>
     <button id="noBtn" onclick="sendAnswer('non')" class="button2">NON</button>
-    <button id="restartBtn" onclick="restartChat()" class="button3" style="display: none;">Recommencer</button>
+    <button id="restartBtn" onclick="restartChat()" class="button4" style="display: none;">Recommencer</button>
 </div>
    
 <p id="response" class="response"></p>
@@ -53,16 +53,17 @@
 
         function isFinalResponse(response) {
             let finalResponses = [
-                "Consulte un médecin.", "Prends un antidouleur et repose-toi.",
-                "Bois de l’eau et repose-toi.", "Essaie de dormir plus tôt ce soir.",
-                "Fais une pause et repose tes yeux.", "Bois un grand verre d’eau.",
-                "Bois de l’eau et surveille tes symptômes.", "Tout va bien !"
+                "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent",
+                "Nous allons faire passer un examen clinique au patient d'ici une trentaine de minutes. Urgent",
+                "Le patient a fait une lipothymie. Il pourra être pris en charge d'ici 15 minutes. Très urgent",
+                "Le patient est dans le coma. Il doit être pris en charge immédiatement. Réanimation",
+                "Le patient a fait une syncope. Il pourra être pris ne charge dans les 15 minutes qui suivent. Très urgent",
             ];
             return finalResponses.includes(response);
         }
 
         function restartChat() {
-            document.getElementById("question").innerText = "As-tu de la fièvre ?";
+            document.getElementById("question").innerText = "Le patient est-il un enfant ?";
             document.getElementById("response").innerText = "";
             document.getElementById("yesBtn").disabled = false;
             document.getElementById("noBtn").disabled = false;
