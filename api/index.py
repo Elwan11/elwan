@@ -26,7 +26,7 @@ decision_tree = {
 },  
     "A-t-il perdu connaissance pendant plus de 5 minutes ?": {
         "oui": "Le patient est dans le coma. Il doit être pris en charge immédiatement. Réanimation",              
-       "non": "Le patient a fait une syncope. Il pourra être pris ne charge dans les 15 minutes qui suivent. Très urgent"
+       "non": "Le patient a fait une syncope. Il ne pourra être pris charge que dans les 15 minutes qui suivent. Très urgent"
 },         
 }
 
