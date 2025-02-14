@@ -9,24 +9,24 @@ CORS(app)
 # Arbre de décision sous forme de dictionnaire
 decision_tree = {
     "Le patient est-il un enfant ?": {
-        "oui": "L'enfant a-t-il déjà eu une maladie cardiaque, des palpitations ?"
-,       "non": "L'adulte a-t-il perdu brièvement connaissance ?"
+        "oui": "L'enfant a-t-il déjà eu une maladie cardiaque, des palpitations ?",
+       "non": "L'adulte a-t-il perdu brièvement connaissance ?"
 },     
     "Le patient a-t-il déjà eu une maladie cardiaque, des palpitations ?": {  
-        "oui": "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent"
-,       "non": "A-t-il fait son malaise au repos ?"
+        "oui": "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent",
+       "non": "A-t-il fait son malaise au repos ?"
 },    
     "A-t-il fait son malaise au repos ?": {
-        "oui": "Nous allons faire passer un examen clinique au patient d'ici une trentaine de minutes. Urgent"
-,       "non": "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent"
+        "oui": "Nous allons faire passer un examen clinique au patient d'ici une trentaine de minutes. Urgent",
+       "non": "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent"
 },  
     "Le patient a-t-il perdu brièvement connaissance ?": {
-        "oui": "A-t-il perdu connaissance pendant plus de 5 minutes ?"
-,       "non": "Le patient a fait une lipothymie. Il pourra être pris en charge d'ici 15 minutes. Très urgent"
+        "oui": "A-t-il perdu connaissance pendant plus de 5 minutes ?",
+       "non": "Le patient a fait une lipothymie. Il pourra être pris en charge d'ici 15 minutes. Très urgent"
 },  
     "A-t-il perdu connaissance pendant plus de 5 minutes ?": {
-        "oui": "Le patient est dans le coma. Il doit être pris en charge immédiatement. Réanimation"              
-,       "non": "Le patient a fait une syncope. Il pourra être pris ne charge dans les 15 minutes qui suivent. Très urgent"
+        "oui": "Le patient est dans le coma. Il doit être pris en charge immédiatement. Réanimation",              
+       "non": "Le patient a fait une syncope. Il pourra être pris ne charge dans les 15 minutes qui suivent. Très urgent"
 },         
 }
 
