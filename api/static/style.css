@@ -58,7 +58,7 @@ body{
     margin-top: 70px;
     width: 500px;
     height: 80px;
-
+    justify-content: center;
 }
 .button4{
     width: 200px;
