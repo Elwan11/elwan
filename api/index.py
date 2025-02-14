@@ -9,7 +9,7 @@ CORS(app)
 # Arbre de décision sous forme de dictionnaire
 decision_tree = {
     "Le patient est-il un enfant ?": {
-        "oui": "L'enfant a-t-il déjà eu une maladie cardiaque, des palpitations ?",
+        "oui": "Le patient a-t-il déjà eu une maladie cardiaque, des palpitations ?",
        "non": "L'adulte a-t-il perdu brièvement connaissance ?"
 },     
     "Le patient a-t-il déjà eu une maladie cardiaque, des palpitations ?": {  
@@ -20,7 +20,7 @@ decision_tree = {
         "oui": "Nous allons faire passer un examen clinique au patient d'ici une trentaine de minutes. Urgent",
        "non": "Nous allons faire le bilan cardiaque du patient d'ici 15 minutes. Très urgent"
 },  
-    "Le patient a-t-il perdu brièvement connaissance ?": {
+    "L'adulte a-t-il perdu brièvement connaissance ?": {
         "oui": "A-t-il perdu connaissance pendant plus de 5 minutes ?",
        "non": "Le patient a fait une lipothymie. Il pourra être pris en charge d'ici 15 minutes. Très urgent"
 },  
