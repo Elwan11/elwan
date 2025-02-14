@@ -55,14 +55,15 @@ body{
 }
 .response{
     margin-top: 70px;
-    width: 80%;
     font-size: 35px;
-    border-style: none;
-    border-radius: 30px;
+    border-style: none;;
+    font-family: sans-serif; 
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 35px;
+    padding: 40px;
+    width: 80%;
+    text-align: center;
     background-color: white;
-    padding-inline: 40px;
-    font-family: sans-serif;
-    
 
 
 }
